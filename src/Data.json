@@ -1,0 +1,31 @@
+{
+    "Item":[
+        {"id":"0","Iname":"select value"},
+        {"id":"1","Iname":"Email"},
+        {"id":"2","Iname":"Analytics"},
+        {"id":"3","Iname":"Encompass Frontiers"},
+        {"id":"4","Iname":"Foundations"},
+        {"id":"5","Iname":"Online Giving"}
+    ],
+
+    "status":[
+        {"id":"0","value":"select value"},
+        {"id":"1","value":"To Do"},
+        {"id":"2","value":"In-Progress"},
+        {"id":"3","value":"Done"}
+        
+    ],
+    "owner":[
+        {"id":"0","owenername":"select value"},
+        {"id":"1","owenername":"Harsha B S"},
+        {"id":"2","owenername":"Dwaipayan B"},
+        {"id":"3","owenername":"Subhas"},
+        {"id":"4","owenername":"Deepak"},
+        {"id":"5","owenername":"Bhargava"}
+    ],
+    "ReleaseVersion":[
+        {
+            "version":"63.5.6"
+        }
+    ]
+}
