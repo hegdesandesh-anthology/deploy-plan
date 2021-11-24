@@ -1,8 +1,12 @@
 import React from "react";
 import updatecomponent from './Hoc'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-class Preparation extends React.Component {
+interface props{
+  tablebody:any;
+  addrow:any;
+  save:any;
+}
+class Preparation extends React.Component<props> {
   
   render() {
     return (
