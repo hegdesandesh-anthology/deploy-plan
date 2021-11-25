@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'
-import Data from './Data.json'
-=======
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react'
 import Data from './Data.json'
 import { library } from '@fortawesome/fontawesome-svg-core';
->>>>>>> af68cf2 (Added FontAwesome Pack of Icons)
 type Myprop={
   
 };
@@ -16,10 +11,7 @@ type Mystate={
   rows:any[];
 };
 
-<<<<<<< HEAD
-=======
 library.add(faTrash);
->>>>>>> af68cf2 (Added FontAwesome Pack of Icons)
 
 const updatecomponent=(Originalcomponent:any)=>{
  class HOC extends Component<Myprop,Mystate> {
@@ -121,11 +113,7 @@ const updatecomponent=(Originalcomponent:any)=>{
                            }
                         </select>
                       </td>
-<<<<<<< HEAD
-                      <td><button onClick={this.handleRemoveRow}> click</button></td>
-=======
                       <td><FontAwesomeIcon icon={["fas", "trash"]} onClick={this.handleRemoveRow} /></td>
->>>>>>> af68cf2 (Added FontAwesome Pack of Icons)
                     </tr>
                   ))}
                   />
