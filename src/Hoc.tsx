@@ -82,7 +82,7 @@ const updatecomponent=(Originalcomponent:any)=>{
                       <td>
 
                         
-                        <select  name="item" value={this.state.rows[idx].Item} onChange={this.handleChange(idx)}  className="form-control">
+                        <select  name="item" defaultValue = "Select Item" value={this.state.rows[idx].Item} onChange={this.handleChange(idx)}  className="form-control">
                          
                            {
                              Data.Item.map((result)=>(<option  key={result.id}>{result.Iname}</option>))
@@ -91,14 +91,14 @@ const updatecomponent=(Originalcomponent:any)=>{
                         </select>
                       </td>
                       <td>
-                        <input type="date" name="date" value={this.state.rows[idx].DueDate}
+                        <input type="date" defaultValue = "Select Date" name="date" value={this.state.rows[idx].DueDate}
                           onChange={this.handleChange(idx)}
                           className="form-control"
                         />
                       </td>
                       <td>
                         
-                        <select name="status"  value={this.state.rows[idx].status} onChange={this.handleChange(idx)}  className="form-control">
+                        <select name="status" defaultValue = "Select Status" value={this.state.rows[idx].status} onChange={this.handleChange(idx)}  className="form-control">
                            {
                              Data.status.map((result)=>(<option key={result.id}>{result.value}</option>))
                             
@@ -106,7 +106,7 @@ const updatecomponent=(Originalcomponent:any)=>{
                         </select>
                       </td>
                       <td>
-                      <select  name="owner" value={this.state.rows[idx].owner} onChange={this.handleChange(idx)}  className="form-control">
+                      <select  name="owner" defaultValue = "Select Owner" value={this.state.rows[idx].owner} onChange={this.handleChange(idx)}  className="form-control">
                           {
                              Data.owner.map((result)=>(<option key={result.id}>{result.owenername}</option>))
                             

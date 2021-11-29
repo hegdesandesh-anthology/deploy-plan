@@ -10,11 +10,10 @@ import GridContainer from './component/GridContainer';
 function App() {
   return (
     <div className="App">
-      <Preparation/>
       <Container>
-        <h4 className="text-primary">Deploy</h4>
+        <Preparation/>
+            <h4 className="text-primary text-center" >Deploy</h4>
         <GridContainer />
-        <br />
       </Container>
     </div>
   );
