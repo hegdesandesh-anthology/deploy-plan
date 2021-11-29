@@ -1,0 +1,173 @@
+{
+    "data": {
+        "BeforeEmail": [
+            {
+                "id": 1,
+                "value": "Grab new Catalogs!! All catalogs matter!",
+                "isChecked": false
+            },
+            {
+                "id": 2,
+                "value": "Encompass Main",
+                "isChecked": false
+            },
+            {
+                "id": 3,
+                "value": "Encompass Web Services",
+                "isChecked": false
+            },
+            {
+                "id": 4,
+                "value": "Encompass Offline Apps",
+                "isChecked": false
+            }
+        ],
+        "Email": {
+            "DoThisFirst": [
+                {
+                    "id": 1,
+                    "value": "Disable INITIATOR, notify deployment channel",
+                    "isChecked": false
+                }
+            ],
+            "DeployEmailReactApps": [
+                {
+                    "id": 1,
+                    "value": "email-home",
+                    "isChecked": false
+                },
+                {
+                    "id": 2,
+                    "value": "email-reporting",
+                    "isChecked": false
+                },
+                {
+                    "id": 3,
+                    "value": "email-builder",
+                    "isChecked": false
+                },
+                {
+                    "id": 4,
+                    "value": "template-builder",
+                    "isChecked": false
+                },
+                {
+                    "id": 5,
+                    "value": "list-management-ui",
+                    "isChecked": false
+                },
+                {
+                    "id": 6,
+                    "value": "style-manager",
+                    "isChecked": false
+                }
+            ],
+            "ConfirmQueuesAreEmpty": [
+                {
+                    "id": 1,
+                    "value": "editor-api (Delivery Consumers & Encompass Email Consumer)",
+                    "isChecked": false
+                },
+                {
+                    "id": 2,
+                    "value": "list-management-api",
+                    "isChecked": false
+                },
+                {
+                    "id": 3,
+                    "value": "list-management-consumers",
+                    "isChecked": false
+                },
+                {
+                    "id": 4,
+                    "value": "AWS ETLs",
+                    "isChecked": false
+                }
+            ],
+            "DoThisLast": [
+                {
+                    "id": 1,
+                    "value": "lemail-services",
+                    "isChecked": false
+                }
+            ]
+        },
+        "OtherDeploys": {
+            "EncompassReactApps": [
+                {
+                    "id": 1,
+                    "value": "Ambassador Portal UI",
+                    "isChecked": false
+                },
+                {
+                    "id": 2,
+                    "value": "Commerce Error Resolution",
+                    "isChecked": false
+                },
+                {
+                    "id": 3,
+                    "value": "Encompass Support Tools Email Queue",
+                    "isChecked": false
+                },
+                {
+                    "id": 4,
+                    "value": "Engagement Dashboard Analytics",
+                    "isChecked": false
+                },
+                {
+                    "id": 5,
+                    "value": "Event Check In",
+                    "isChecked": false
+                },
+                {
+                    "id": 6,
+                    "value": "Import UI",
+                    "isChecked": false
+                },
+                {
+                    "id": 7,
+                    "value": "Notifications Manager",
+                    "isChecked": false
+                },
+                {
+                    "id": 8,
+                    "value": "PCB",
+                    "isChecked": false
+                },
+                {
+                    "id": 9,
+                    "value": "Reporting UI (GTE)",
+                    "isChecked": false
+                },
+                {
+                    "id": 10,
+                    "value": "Scoreboards Admin",
+                    "isChecked": false
+                },
+                {
+                    "id": 11,
+                    "value": "Scoreboards Import",
+                    "isChecked": false
+                },
+                {
+                    "id": 12,
+                    "value": "Scoreboards Renderer",
+                    "isChecked": false
+                }
+            ],
+            "OtherAPIs": [
+                {
+                    "id": 1,
+                    "value": "Scoreboards API",
+                    "isChecked": false
+                },
+                {
+                    "id": 2,
+                    "value": "Engagement Metrics API",
+                    "isChecked": false
+                }
+            ]
+        },
+        "Misc": []
+    }
+}

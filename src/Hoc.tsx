@@ -56,8 +56,8 @@ const updatecomponent=(Originalcomponent:any)=>{
       getStateFromLocalStorage = () => { 
         let data: string | null
          data = localStorage.getItem('state'); 
-        if(data !== undefined) { 
-          this.setState(JSON.parse(data||'')); 
+        if(data) { 
+          this.setState(JSON.parse(data||'[]')); 
         } 
       } 
       
