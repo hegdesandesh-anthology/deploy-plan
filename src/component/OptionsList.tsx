@@ -28,14 +28,16 @@ class OptionsList extends React.Component<Props> {
                 {
                     this.props.options.map((option, index) => {
                         return (
-                            <div key={option.id} className="form-check"> 
-                                <input className="form-check-input" 
-                                type="checkbox" 
-                                data-index={index+1} 
-                                onChange={this.onChange} 
-                                checked={this.props.flag[index]} />
+                            <div key={option.id} className={this.props.flag[index] ? 'bg-warning' : ''}>
+                                <div className="form-check">
+                                    <input className="form-check-input"
+                                        type="checkbox"
+                                        data-index={index + 1}
+                                        onChange={this.onChange}
+                                        checked={this.props.flag[index]} />
 
-                                <label className="form-check-label">{option.value}</label>
+                                    <label className="form-check-label">{option.value}</label>
+                                </div>
                             </div>
                         )
                     })
