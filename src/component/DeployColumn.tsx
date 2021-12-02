@@ -3,10 +3,10 @@ import {Col} from 'react-bootstrap';
 
 import OptionsList from "./OptionsList";
 
-import options1 from '../Data/options1.json';
-import options2 from '../Data/options2.json';
-import options3 from '../Data/options3.json';
-import options4 from '../Data/options4.json';
+import options1 from '../data/options1.json';
+import options2 from '../data/options2.json';
+import options3 from '../data/options3.json';
+import options4 from '../data/options4.json';
 
 interface Props{
     title: string

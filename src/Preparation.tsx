@@ -12,8 +12,7 @@ class Preparation extends React.Component<props> {
     return (
       <>
       
-        <div className="p-3 mb-2 bg-light text-dark container-fluid">
-          <p>   <br></br> </p>
+        
           <h3 className="text-center">Preparation </h3>
               <br></br>
           <h3>
@@ -47,7 +46,7 @@ class Preparation extends React.Component<props> {
             
             </div>
           </div>
-        </div>
+        
       </>
     );
   }

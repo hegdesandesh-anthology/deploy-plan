@@ -23,11 +23,15 @@ const updatecomponent=(Originalcomponent:any)=>{
     }
     
    
-      handleChange = (idx:number) => (e: { target: { name: string; value:string; }; }) => {
-        const { name, value } = e.target;
+      handleChange = (idx:number) => (e: { target: { value:string; } }) => {
+        const { value } = e.target;
         const rows = [...this.state.rows];
         rows[idx] = {
-          [name]:value
+          Item:value,
+          status:value,
+         owner:value,
+          DueDate:value
+        // [name]:value
         
         };
         this.setState({
@@ -52,13 +56,15 @@ const updatecomponent=(Originalcomponent:any)=>{
 
       saveStateToLocalStorage = () => { 
         localStorage.setItem('state', JSON.stringify(this.state)); 
+       
       } 
       getStateFromLocalStorage = () => { 
         let data: string | null
          data = localStorage.getItem('state'); 
         if(data !== undefined) { 
-          this.setState(JSON.parse(data||'')); 
+          this.setState(JSON.parse(data||'{}')); 
         } 
+        
       } 
       
       componentDidMount() { 
@@ -66,16 +72,22 @@ const updatecomponent=(Originalcomponent:any)=>{
         this.getStateFromLocalStorage(); 
       } 
       
-      handleRemoveRow = () => {
-        this.setState({
+      handleRemoveRow = (idx:number) => {
+        // this.setState({
           
-          rows: this.state.rows.slice(0, -1)
-        });
+        //   rows: this.state.rows.slice(idx, 1)
+        // });
+        const newrows = [...this.state.rows];
+    newrows.splice(idx, 1);
+
+    this.setState(state => ({
+        rows: newrows
+    }));
       };
     render() {
         return (
             <div>
-                <Originalcomponent addrow={this.handleAddRow} deletrow={this.handleRemoveRow}  save={this.saveStateToLocalStorage}
+                <Originalcomponent addrow={this.handleAddRow}  save={this.saveStateToLocalStorage}
                  tablebody={this.state.rows.map((item, idx) => (
                     <tr key={idx}>
                       <td>{idx}</td>
@@ -83,7 +95,7 @@ const updatecomponent=(Originalcomponent:any)=>{
 
                         
                         <select  name="item" value={this.state.rows[idx].Item} onChange={this.handleChange(idx)}  className="form-control">
-                         
+                         <option >----select value----</option>
                            {
                              Data.Item.map((result)=>(<option  key={result.id}>{result.Iname}</option>))
                             
@@ -99,6 +111,7 @@ const updatecomponent=(Originalcomponent:any)=>{
                       <td>
                         
                         <select name="status"  value={this.state.rows[idx].status} onChange={this.handleChange(idx)}  className="form-control">
+                        <option >----select value----</option>
                            {
                              Data.status.map((result)=>(<option key={result.id}>{result.value}</option>))
                             
@@ -107,13 +120,14 @@ const updatecomponent=(Originalcomponent:any)=>{
                       </td>
                       <td>
                       <select  name="owner" value={this.state.rows[idx].owner} onChange={this.handleChange(idx)}  className="form-control">
+                      <option >----select value----</option>
                           {
                              Data.owner.map((result)=>(<option key={result.id}>{result.owenername}</option>))
                             
                            }
                         </select>
                       </td>
-                      <td><FontAwesomeIcon icon={["fas", "trash"]} onClick={this.handleRemoveRow} /></td>
+                      <td><FontAwesomeIcon icon={["fas", "trash"]} onClick={()=>this.handleRemoveRow(idx)} /></td>
                     </tr>
                   ))}
                   />
