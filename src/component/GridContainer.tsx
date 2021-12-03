@@ -64,123 +64,93 @@ class GridContainer extends React.Component<{}, State> {
             }
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleChnageForStaging1 = this.handleChnageForStaging1.bind(this);
-        this.handleChnageForStaging2 = this.handleChnageForStaging2.bind(this);
-        this.handleChnageForAU1 = this.handleChnageForAU1.bind(this);
-        this.handleChnageForAU2 = this.handleChnageForAU2.bind(this);
-        this.handleChnageForCA1 = this.handleChnageForCA1.bind(this);
-        this.handleChnageForCA2 = this.handleChnageForCA2.bind(this);
-        this.handleChnageForUS1 = this.handleChnageForUS1.bind(this);
-        this.handleChnageForUS2 = this.handleChnageForUS2.bind(this);
+        this.handleChnageForToggleOn = this.handleChnageForToggleOn.bind(this);
+        this.handleChnageForStaging = this.handleChnageForStaging.bind(this);
+        this.handleChnageForAU = this.handleChnageForAU.bind(this);
+        this.handleChnageForCA = this.handleChnageForCA.bind(this);
+        this.handleChnageForUS = this.handleChnageForUS.bind(this);
     }
     handleChange(event: any) {
         this.setState({
             isToggleOn: event.target.checked
         })
     }
-    handleChnageForStaging1(event: any, partName: string) {
+    handleChnageForToggleOn(event: any, partName: string) {
         this.setState(prevState => {
-            const staging = prevState.Staging;
-            const index = Number(event.target.dataset.index);
-            staging[partName as keyof typeof staging][index - 1] = Boolean(event.target.checked);
-            console.log("staging1");
+            let index = Number(event.target.dataset.index);
+            let res = Boolean(event.target.checked);
             return {
-                Staging: staging,
-                AU: staging,
-                CA: staging,
-                US: staging
+                Staging: {
+                    ...prevState.Staging,
+                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index-1 ? res : e)
+                },
+                AU: {
+                    ...prevState.AU,
+                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index-1 ? res : e)
+                },
+                CA: {
+                    ...prevState.CA,
+                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index-1 ? res : e)
+                },
+                US: {
+                    ...prevState.US,
+                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index-1 ? res : e)
+                }
             }
         })
     }
-    handleChnageForStaging2(event: any, partName: string) {
+    handleChnageForStaging(event: any, partName: string) {
         this.setState(prevState => {
-            const staging = prevState.Staging;
-            const index = Number(event.target.dataset.index);
-            staging[partName as keyof typeof staging][index - 1] = Boolean(event.target.checked);
-            console.log("staging2");
+            let index = Number(event.target.dataset.index);
+            let res = Boolean(event.target.checked);
             return {
-                Staging: staging
+                ...prevState,
+                Staging: {
+                    ...prevState.Staging,
+                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index-1 ? res : e)
+                }
             }
         })
     }
-    handleChnageForAU1(event: any, partName: string) {
+    
+    handleChnageForAU(event: any, partName: string) {
         this.setState(prevState => {
-            const au = prevState.AU;
-            const index = Number(event.target.dataset.index);
-            au[partName as keyof typeof au][index - 1] = Boolean(event.target.checked);
-            console.log("au1");
+            let index = Number(event.target.dataset.index);
+            let res = Boolean(event.target.checked);
             return {
-                Staging: au,
-                AU: au,
-                CA: au,
-                US: au
+                ...prevState,
+                AU: {
+                    ...prevState.AU,
+                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index-1 ? res : e)
+                }
             }
         })
     }
-    handleChnageForAU2(event: any, partName: string) {
+    
+    handleChnageForCA(event: any, partName: string) {
         this.setState(prevState => {
-            const au = prevState.AU;
-            const index = Number(event.target.dataset.index);
-            au[partName as keyof typeof au][index - 1] = Boolean(event.target.checked);
-            console.log("au2");
+            let index = Number(event.target.dataset.index);
+            let res = Boolean(event.target.checked);
             return {
-                AU: au
+                ...prevState,
+                CA: {
+                    ...prevState.CA,
+                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index-1 ? res : e)
+                }
             }
         })
     }
-    handleChnageForCA1(event: any, partName: string) {
+    
+    handleChnageForUS(event: any, partName: string) {
         this.setState(prevState => {
-            const ca = prevState.CA;
-            const index = Number(event.target.dataset.index);
-            ca[partName as keyof typeof ca][index - 1] = Boolean(event.target.checked);
-            console.log("ca1");
+            let index = Number(event.target.dataset.index);
+            let res = Boolean(event.target.checked);
             return {
-                Staging: ca,
-                AU: ca,
-                CA: ca,
-                US: ca
-            }
-        })
-    }
-    handleChnageForCA2(event: any, partName: string) {
-        this.setState(prevState => {
-            const ca = prevState.CA;
-            const index = Number(event.target.dataset.index);
-            ca[partName as keyof typeof ca][index - 1] = Boolean(event.target.checked);
-            console.log("ca2");
-            return {
-                CA: ca
-            }
-        })
-    }
-    handleChnageForUS1(event: any, partName: string) {
-        this.setState(prevState => {
-            const staging = prevState.Staging;
-            const au = prevState.AU;
-            const ca = prevState.CA;
-            const us = prevState.US;
-            const index = Number(event.target.dataset.index);
-            staging[partName as keyof typeof us][index - 1] = Boolean(event.target.checked);
-            au[partName as keyof typeof us][index - 1] = Boolean(event.target.checked);
-            ca[partName as keyof typeof us][index - 1] = Boolean(event.target.checked);
-            us[partName as keyof typeof us][index - 1] = Boolean(event.target.checked);
-            console.log("us1");
-            return {
-                Staging: staging,
-                AU: au,
-                CA: ca,
-                US: us
-            }
-        })
-    }
-    handleChnageForUS2(event: any, partName: string) {
-        this.setState(prevState => {
-            const us = prevState.US;
-            const index = Number(event.target.dataset.index);
-            us[partName as keyof typeof us][index - 1] = Boolean(event.target.checked);
-            console.log("us2");
-            return {
-                US: us
+                ...prevState,
+                US: {
+                    ...prevState.US,
+                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index-1 ? res : e)
+                }
             }
         })
     }
@@ -200,10 +170,10 @@ class GridContainer extends React.Component<{}, State> {
                 </div>
                 <Container>
                     <Row>
-                        <DeployColumn title="Staging" data={this.state.Staging} onInputChange={this.state.isToggleOn ? this.handleChnageForStaging1 : this.handleChnageForStaging2} />
-                        <DeployColumn title="AU" data={this.state.AU} onInputChange={this.state.isToggleOn ? this.handleChnageForAU1 : this.handleChnageForAU2} />
-                        <DeployColumn title="CA" data={this.state.CA} onInputChange={this.state.isToggleOn ? this.handleChnageForCA1 : this.handleChnageForCA2} />
-                        <DeployColumn title="US" data={this.state.US} onInputChange={this.state.isToggleOn ? this.handleChnageForUS1 : this.handleChnageForUS2} />
+                        <DeployColumn title="Staging" data={this.state.Staging} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForStaging} />
+                        <DeployColumn title="AU" data={this.state.AU} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForAU} />
+                        <DeployColumn title="CA" data={this.state.CA} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForCA} />
+                        <DeployColumn title="US" data={this.state.US} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForUS} />
                     </Row>
                 </Container>
             </div>

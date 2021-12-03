@@ -5,7 +5,7 @@ import OptionsList from "./OptionsList";
 
 import options from '../data/options.json';
 
-interface State {
+interface OptionsModel {
     BeforeEmail: boolean[],
     DoThisFirst: boolean[], 
     DeployEmailReactApps: boolean[], 
@@ -17,22 +17,13 @@ interface State {
 
 interface Props {
     title: string,
-    data: State,
+    data: OptionsModel,
     onInputChange: any
 }
 
-class DeployColumn extends React.Component<Props, State> {
+class DeployColumn extends React.Component<Props> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            BeforeEmail: [false, false, false, false],
-            DoThisFirst: [false], 
-            DeployEmailReactApps: [false, false, false, false, false, false], 
-            ConfirmQueuesAreEmpty: [false, false, false, false], 
-            DoThisLast: [false], 
-            EncompassReactApps: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], 
-            OtherAPIs: [false, false]
-        }
         this.handleInputChangeForBeforeEmail = this.handleInputChangeForBeforeEmail.bind(this);
         this.handleInputChangeForDoThisFirst = this.handleInputChangeForDoThisFirst.bind(this);
         this.handleInputChangeForDeployEmailReactApps = this.handleInputChangeForDeployEmailReactApps.bind(this);
@@ -80,21 +71,21 @@ class DeployColumn extends React.Component<Props, State> {
         let OtherAPIs = options.data.OtherDeploys.OtherAPIs;
 
         return (
-            <Col className="px-0">
-                <div className="border border-dark border-2 p-2">
+            <Col className="border border-dark px-0">
+                <div className="border-bottom border-dark p-2">
                     <div className="text-center">
                         <b>{this.props.title}</b>
                     </div>
                 </div>
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <OptionsList options={BeforeEmail} flag={this.props.data.BeforeEmail} onInputChange={this.handleInputChangeForBeforeEmail} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <b>EMAIL</b>
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <OptionsList options={DoThisFirst} flag={this.props.data.DoThisFirst} onInputChange={this.handleInputChangeForDoThisFirst} />
                     <div>
                         Deploy Email React Apps
@@ -110,7 +101,7 @@ class DeployColumn extends React.Component<Props, State> {
                     <OptionsList options={DoThisLast} flag={this.props.data.DoThisLast} onInputChange={this.handleInputChangeForDoThisLast} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div>
                         <b>OTHER Deploys</b>
                         <br />
@@ -121,7 +112,7 @@ class DeployColumn extends React.Component<Props, State> {
                     <OptionsList options={OtherAPIs} flag={this.props.data.OtherAPIs} onInputChange={this.handleInputChangeForOtherAPIs} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div><b>MISC</b></div>
                     {/* <OptionsList options={[]} flag={[]} onInputChange={() => false} /> */}
                 </div>
