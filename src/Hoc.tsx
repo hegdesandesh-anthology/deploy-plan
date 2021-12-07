@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import React, { Component } from 'react'
+import React, { Component ,useState} from 'react'
 import Data from './Data.json'
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { Row } from 'react-bootstrap';
+
 type Myprop={
   
 };
@@ -22,15 +24,80 @@ const updatecomponent=(Originalcomponent:any)=>{
       }
     }
     
+  //   const [rows:any, setAllValues:any] =useState({
+  //     item: '',
+  //    status : '',
+  //     owner: '',
+  //     date: ''
+  //  });
+  //  const handleChange =(idx:number) =>(e: { target: { name:string; value:string; } }) => {
+  //     setAllValues({...this.state.rows, [e.target.name]: e.target.value})
+  //  }
+    
    
       handleChange = (idx:number) => (e: { target: { value:string; } }) => {
         const { value } = e.target;
         const rows = [...this.state.rows];
         rows[idx] = {
           Item:value,
+          DueDate:this.state.rows[idx].DueDate,
+          status:this.state.rows[idx].status,
+         owner:this.state.rows[idx].owner
+         
+        // [name]:value
+        
+        };
+        this.setState({
+          rows
+        });
+      };
+
+      
+      handleChange1 = (idx:number) => (e: { target: { value:string; } }) => {
+        const { value } = e.target;
+        const rows = [...this.state.rows];
+        rows[idx] = {
+          Item:this.state.rows[idx].Item,
+          DueDate:value,
+          status:this.state.rows[idx].status,
+         owner:this.state.rows[idx].owner
+         
+        // [name]:value
+        
+        };
+        this.setState({
+          rows
+        });
+      };
+
+
+      handleChange2 = (idx:number) => (e: { target: { value:string; } }) => {
+        const { value } = e.target;
+        const rows = [...this.state.rows];
+        rows[idx] = {
+          Item:this.state.rows[idx].Item,
+          DueDate:this.state.rows[idx].DueDate,
           status:value,
-         owner:value,
-          DueDate:value
+         owner:this.state.rows[idx].owner
+         
+        // [name]:value
+        
+        };
+        this.setState({
+          rows
+        });
+      };
+
+
+      handleChange3 = (idx:number) => (e: { target: { value:string; } }) => {
+        const { value } = e.target;
+        const rows = [...this.state.rows];
+        rows[idx] = {
+          Item:this.state.rows[idx].item,
+          DueDate:this.state.rows[idx].DueDate,
+          status:this.state.rows[idx].status,
+           owner:value
+         
         // [name]:value
         
         };
@@ -41,9 +108,10 @@ const updatecomponent=(Originalcomponent:any)=>{
       handleAddRow = () => {
         const item:any= {
           Item: " ",
+          DueDate:" ",
           status: " ",
-          owner:" ",
-          DueDate:" "
+          owner:" "
+         
         };
         this.setState({
           
@@ -104,13 +172,13 @@ const updatecomponent=(Originalcomponent:any)=>{
                       </td>
                       <td>
                         <input type="date" name="date" value={this.state.rows[idx].DueDate}
-                          onChange={this.handleChange(idx)}
+                          onChange={this.handleChange1(idx)}
                           className="form-control"
                         />
                       </td>
                       <td>
                         
-                        <select name="status"  value={this.state.rows[idx].status} onChange={this.handleChange(idx)}  className="form-control">
+                        <select name="status"  value={this.state.rows[idx].status} onChange={this.handleChange2(idx)}  className="form-control">
                         <option >----select value----</option>
                            {
                              Data.status.map((result)=>(<option key={result.id}>{result.value}</option>))
@@ -119,7 +187,7 @@ const updatecomponent=(Originalcomponent:any)=>{
                         </select>
                       </td>
                       <td>
-                      <select  name="owner" value={this.state.rows[idx].owner} onChange={this.handleChange(idx)}  className="form-control">
+                      <select  name="owner" value={this.state.rows[idx].owner} onChange={this.handleChange3(idx)}  className="form-control">
                       <option >----select value----</option>
                           {
                              Data.owner.map((result)=>(<option key={result.id}>{result.owenername}</option>))
