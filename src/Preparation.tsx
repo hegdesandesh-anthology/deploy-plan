@@ -24,7 +24,7 @@ class Preparation extends React.Component<props> {
               <table className="table table-bordered table-hover" >
                 <thead>
                   <tr>
-                    <th className="text-center"> Sl.no </th>
+                    <th className="text-center"> Sl.No </th>
                     <th className="text-center"> Item </th>
                     <th className="text-center"> Due Date </th>
                     <th className="text-center"> Status </th>

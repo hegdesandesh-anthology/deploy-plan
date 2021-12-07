@@ -3,146 +3,118 @@ import {Col} from 'react-bootstrap';
 
 import OptionsList from "./OptionsList";
 
-import options1 from '../data/options1.json';
-import options2 from '../data/options2.json';
-import options3 from '../data/options3.json';
-import options4 from '../data/options4.json';
+import options from '../data/options.json';
 
-interface Props{
-    title: string
+interface OptionsModel {
+    BeforeEmail: boolean[],
+    DoThisFirst: boolean[], 
+    DeployEmailReactApps: boolean[], 
+    ConfirmQueuesAreEmpty: boolean[], 
+    DoThisLast: boolean[], 
+    EncompassReactApps: boolean[], 
+    OtherAPIs: boolean[]
 }
 
-interface Option {
-    id?: number,
-    value?: string,
-    isChecked?: boolean
+interface Props {
+    title: string,
+    data: OptionsModel,
+    onInputChange: any
 }
 
-interface State {
-    options1: boolean[][],
-    options2: boolean[][],
-    options3: boolean[][],
-    options4: boolean[][]
-}
-
-class DeployColumn extends React.Component<Props, State> {
+class DeployColumn extends React.Component<Props> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            options1: [[false, false, false, false]],
-            options2: [[false], [false, false, false, false, false, false], [false], [false, false], [false, false, false], [false]],
-            options3: [[false, false, false, false, false, false, false, false, false, false, false, false], [false, false]],
-            options4: [[false]]
-        }
-        this.handleInputChange1 = this.handleInputChange1.bind(this);
-        this.handleInputChange2 = this.handleInputChange2.bind(this);
-        this.handleInputChange3 = this.handleInputChange3.bind(this);
-        this.handleInputChange4 = this.handleInputChange4.bind(this);
+        this.handleInputChangeForBeforeEmail = this.handleInputChangeForBeforeEmail.bind(this);
+        this.handleInputChangeForDoThisFirst = this.handleInputChangeForDoThisFirst.bind(this);
+        this.handleInputChangeForDeployEmailReactApps = this.handleInputChangeForDeployEmailReactApps.bind(this);
+        this.handleInputChangeForConfirmQueuesAreEmpty = this.handleInputChangeForConfirmQueuesAreEmpty.bind(this);
+        this.handleInputChangeForDoThisLast = this.handleInputChangeForDoThisLast.bind(this);
+        this.handleInputChangeForEncompassReactApps = this.handleInputChangeForEncompassReactApps.bind(this);
+        this.handleInputChangeForOtherAPIs = this.handleInputChangeForOtherAPIs.bind(this);
     }
 
-    handleInputChange1(event: React.ChangeEvent<HTMLInputElement>, i: number) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const arr = prevState.options1;
-            arr[i-1][j-1] = Boolean(event.target.value);
-            console.log(arr);
-            return {options1: arr}
-        });
+    handleInputChangeForBeforeEmail(event: any) {
+        this.props.onInputChange(event, "BeforeEmail")
     }
 
-    handleInputChange2(event: React.ChangeEvent<HTMLInputElement>, i: number) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const arr = prevState.options2;
-            arr[i-1][j-1] = Boolean(event.target.value);
-            console.log(arr);
-            return {options2: arr}
-        });
+    handleInputChangeForDoThisFirst(event: any) {
+        this.props.onInputChange(event, "DoThisFirst")
     }
 
-    handleInputChange3(event: React.ChangeEvent<HTMLInputElement>, i: number) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const arr = prevState.options3;
-            arr[i-1][j-1] = Boolean(event.target.value);
-            console.log(arr);
-            return {options3: arr}
-        });
+    handleInputChangeForDeployEmailReactApps(event: any) {
+        this.props.onInputChange(event, "DeployEmailReactApps")
     }
 
-    handleInputChange4(event: React.ChangeEvent<HTMLInputElement>, i: number) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const arr = prevState.options4;
-            arr[i-1][j-1] = Boolean(event.target.value);
-            console.log(arr);
-            return {options4: arr}
-        });
+    handleInputChangeForConfirmQueuesAreEmpty(event: any) {
+        this.props.onInputChange(event, "ConfirmQueuesAreEmpty")
+    }
+
+    handleInputChangeForDoThisLast(event: any) {
+        this.props.onInputChange(event, "DoThisLast")
+    }
+
+    handleInputChangeForEncompassReactApps(event: any) {
+        this.props.onInputChange(event, "EncompassReactApps")
+    }
+
+    handleInputChangeForOtherAPIs(event: any) {
+        this.props.onInputChange(event, "OtherAPIs")
     }
     
-
     render() {
-        let o1d1: Option[];
-        [o1d1] = options1.data;
-
-        let o2d1: Option[], o2d2: Option[], o2d3: Option[], o2d4: Option[], o2d5: Option[], o2d6: Option[];
-        [o2d1, o2d2, o2d3, o2d4, o2d5, o2d6] = options2.data;
-
-        let o3d1: Option[], o3d2: Option[];
-        [o3d1, o3d2] = options3.data;
-
-        let o4d1: Option[];
-        [o4d1] = options4.data;
+        let BeforeEmail = options.data.BeforeEmail;
+        let DoThisFirst = options.data.Email.DoThisFirst;
+        let DeployEmailReactApps = options.data.Email.DeployEmailReactApps;
+        let ConfirmQueuesAreEmpty = options.data.Email.ConfirmQueuesAreEmpty;
+        let DoThisLast = options.data.Email.DoThisLast;
+        let EncompassReactApps = options.data.OtherDeploys.EncompassReactApps;
+        let OtherAPIs = options.data.OtherDeploys.OtherAPIs;
 
         return (
-            <Col className="px-0">
-                <div className="border border-dark border-2 p-2">
+            <Col className="border border-dark px-0">
+                <div className="border-bottom border-dark p-2">
                     <div className="text-center">
                         <b>{this.props.title}</b>
                     </div>
                 </div>
-                <div className="border border-dark border-2 p-2">
-                    <OptionsList options={o1d1} flag={this.state.options1[0]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange1(event, 1)} />
+                <div className="border-bottom border-dark p-2">
+                    <OptionsList options={BeforeEmail} flag={this.props.data.BeforeEmail} onInputChange={this.handleInputChangeForBeforeEmail} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <b>EMAIL</b>
                 </div>
 
-                <div className="border border-dark border-2 p-2">
-                    <OptionsList options={o2d1} flag={this.state.options2[0]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 1)} />
+                <div className="border-bottom border-dark p-2">
+                    <OptionsList options={DoThisFirst} flag={this.props.data.DoThisFirst} onInputChange={this.handleInputChangeForDoThisFirst} />
                     <div>
                         Deploy Email React Apps
                     </div>
-                    <OptionsList options={o2d2} flag={this.state.options2[1]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 2)} />
+                    <OptionsList options={DeployEmailReactApps} flag={this.props.data.DeployEmailReactApps} onInputChange={this.handleInputChangeForDeployEmailReactApps} />
                     <div>
                         Confirm queues are empty before doing the remaining
                     </div>
-                    <OptionsList options={o2d3} flag={this.state.options2[2]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 3)} />
-                    <div className="pl-3">
-                        <OptionsList options={o2d4} flag={this.state.options2[3]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 4)} />
-                    </div>
-                    <OptionsList options={o2d5} flag={this.state.options2[4]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 5)} />
+                    <OptionsList options={ConfirmQueuesAreEmpty} flag={this.props.data.ConfirmQueuesAreEmpty} onInputChange={this.handleInputChangeForConfirmQueuesAreEmpty} />
                     <div>
                         <b>DO THIS LAST</b> as it restarts the scheduler & initiator
                     </div>
-                    <OptionsList options={o2d6} flag={this.state.options2[5]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange2(event, 6)} />
+                    <OptionsList options={DoThisLast} flag={this.props.data.DoThisLast} onInputChange={this.handleInputChangeForDoThisLast} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div>
                         <b>OTHER Deploys</b>
                         <br />
                         Encompass React Apps
                     </div>
-                    <OptionsList options={o3d1} flag={this.state.options3[0]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange3(event, 1)} /> 
+                    <OptionsList options={EncompassReactApps} flag={this.props.data.EncompassReactApps} onInputChange={this.handleInputChangeForEncompassReactApps} /> 
                     <div>Other APIs</div>
-                    <OptionsList options={o3d2} flag={this.state.options3[1]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange3(event, 2)} />
+                    <OptionsList options={OtherAPIs} flag={this.props.data.OtherAPIs} onInputChange={this.handleInputChangeForOtherAPIs} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div><b>MISC</b></div>
-                    <OptionsList options={o4d1} flag={this.state.options4[0]} onInputChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange4(event, 1)} />
+                    {/* <OptionsList options={[]} flag={[]} onInputChange={() => false} /> */}
                 </div>
             </Col>
         )
