@@ -12,8 +12,9 @@ function App() {
     <div className="App">
       <Container>
         <Preparation/>
-            <h4 className="text-primary text-center" >Deploy</h4>
+        <br />
         <GridContainer />
+        <br />
       </Container>
     </div>
   );

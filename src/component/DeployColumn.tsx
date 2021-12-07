@@ -5,11 +5,7 @@ import OptionsList from "./OptionsList";
 
 import options from '../data/options.json';
 
-interface Props {
-    title: string
-}
-
-interface State {
+interface OptionsModel {
     BeforeEmail: boolean[],
     DoThisFirst: boolean[], 
     DeployEmailReactApps: boolean[], 
@@ -19,18 +15,15 @@ interface State {
     OtherAPIs: boolean[]
 }
 
-class DeployColumn extends React.Component<Props, State> {
+interface Props {
+    title: string,
+    data: OptionsModel,
+    onInputChange: any
+}
+
+class DeployColumn extends React.Component<Props> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            BeforeEmail: [false, false, false, false],
-            DoThisFirst: [false], 
-            DeployEmailReactApps: [false, false, false, false, false, false], 
-            ConfirmQueuesAreEmpty: [false, false, false, false], 
-            DoThisLast: [false], 
-            EncompassReactApps: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], 
-            OtherAPIs: [false, false]
-        }
         this.handleInputChangeForBeforeEmail = this.handleInputChangeForBeforeEmail.bind(this);
         this.handleInputChangeForDoThisFirst = this.handleInputChangeForDoThisFirst.bind(this);
         this.handleInputChangeForDeployEmailReactApps = this.handleInputChangeForDeployEmailReactApps.bind(this);
@@ -41,80 +34,31 @@ class DeployColumn extends React.Component<Props, State> {
     }
 
     handleInputChangeForBeforeEmail(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.BeforeEmail;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                BeforeEmail: list
-            };
-        })
+        this.props.onInputChange(event, "BeforeEmail")
     }
 
     handleInputChangeForDoThisFirst(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.DoThisFirst;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                DoThisFirst: list
-            };
-        })
+        this.props.onInputChange(event, "DoThisFirst")
     }
 
     handleInputChangeForDeployEmailReactApps(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.DeployEmailReactApps;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                DeployEmailReactApps: list
-            };
-        })
+        this.props.onInputChange(event, "DeployEmailReactApps")
     }
 
     handleInputChangeForConfirmQueuesAreEmpty(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.ConfirmQueuesAreEmpty;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                ConfirmQueuesAreEmpty: list
-            };
-        })
+        this.props.onInputChange(event, "ConfirmQueuesAreEmpty")
     }
 
     handleInputChangeForDoThisLast(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.DoThisLast;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                DoThisLast: list
-            };
-        })
+        this.props.onInputChange(event, "DoThisLast")
     }
 
     handleInputChangeForEncompassReactApps(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.EncompassReactApps;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                EncompassReactApps: list
-            };
-        })
+        this.props.onInputChange(event, "EncompassReactApps")
     }
 
     handleInputChangeForOtherAPIs(event: any) {
-        this.setState(prevState => {
-            const j = Number(event.target.dataset.index);
-            const list = prevState.OtherAPIs;
-            list[j-1] = Boolean(event.target.checked);
-            return {
-                OtherAPIs: list
-            };
-        })
+        this.props.onInputChange(event, "OtherAPIs")
     }
     
     render() {
@@ -127,50 +71,50 @@ class DeployColumn extends React.Component<Props, State> {
         let OtherAPIs = options.data.OtherDeploys.OtherAPIs;
 
         return (
-            <Col className="px-0">
-                <div className="border border-dark border-2 p-2">
+            <Col className="border border-dark px-0">
+                <div className="border-bottom border-dark p-2">
                     <div className="text-center">
                         <b>{this.props.title}</b>
                     </div>
                 </div>
-                <div className="border border-dark border-2 p-2">
-                    <OptionsList options={BeforeEmail} flag={this.state.BeforeEmail} onInputChange={this.handleInputChangeForBeforeEmail} />
+                <div className="border-bottom border-dark p-2">
+                    <OptionsList options={BeforeEmail} flag={this.props.data.BeforeEmail} onInputChange={this.handleInputChangeForBeforeEmail} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <b>EMAIL</b>
                 </div>
 
-                <div className="border border-dark border-2 p-2">
-                    <OptionsList options={DoThisFirst} flag={this.state.DoThisFirst} onInputChange={this.handleInputChangeForDoThisFirst} />
+                <div className="border-bottom border-dark p-2">
+                    <OptionsList options={DoThisFirst} flag={this.props.data.DoThisFirst} onInputChange={this.handleInputChangeForDoThisFirst} />
                     <div>
                         Deploy Email React Apps
                     </div>
-                    <OptionsList options={DeployEmailReactApps} flag={this.state.DeployEmailReactApps} onInputChange={this.handleInputChangeForDeployEmailReactApps} />
+                    <OptionsList options={DeployEmailReactApps} flag={this.props.data.DeployEmailReactApps} onInputChange={this.handleInputChangeForDeployEmailReactApps} />
                     <div>
                         Confirm queues are empty before doing the remaining
                     </div>
-                    <OptionsList options={ConfirmQueuesAreEmpty} flag={this.state.ConfirmQueuesAreEmpty} onInputChange={this.handleInputChangeForConfirmQueuesAreEmpty} />
+                    <OptionsList options={ConfirmQueuesAreEmpty} flag={this.props.data.ConfirmQueuesAreEmpty} onInputChange={this.handleInputChangeForConfirmQueuesAreEmpty} />
                     <div>
                         <b>DO THIS LAST</b> as it restarts the scheduler & initiator
                     </div>
-                    <OptionsList options={DoThisLast} flag={this.state.DoThisLast} onInputChange={this.handleInputChangeForDoThisLast} />
+                    <OptionsList options={DoThisLast} flag={this.props.data.DoThisLast} onInputChange={this.handleInputChangeForDoThisLast} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div>
                         <b>OTHER Deploys</b>
                         <br />
                         Encompass React Apps
                     </div>
-                    <OptionsList options={EncompassReactApps} flag={this.state.EncompassReactApps} onInputChange={this.handleInputChangeForEncompassReactApps} /> 
+                    <OptionsList options={EncompassReactApps} flag={this.props.data.EncompassReactApps} onInputChange={this.handleInputChangeForEncompassReactApps} /> 
                     <div>Other APIs</div>
-                    <OptionsList options={OtherAPIs} flag={this.state.OtherAPIs} onInputChange={this.handleInputChangeForOtherAPIs} />
+                    <OptionsList options={OtherAPIs} flag={this.props.data.OtherAPIs} onInputChange={this.handleInputChangeForOtherAPIs} />
                 </div>
 
-                <div className="border border-dark border-2 p-2">
+                <div className="border-bottom border-dark p-2">
                     <div><b>MISC</b></div>
-                    <OptionsList options={[]} flag={[]} onInputChange={() => false} />
+                    {/* <OptionsList options={[]} flag={[]} onInputChange={() => false} /> */}
                 </div>
             </Col>
         )
