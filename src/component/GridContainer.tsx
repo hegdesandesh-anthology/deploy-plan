@@ -156,22 +156,6 @@ class GridContainer extends React.Component<{}, State> {
     }
     render() {
         return (
-<<<<<<< HEAD
-            <>
-                <Row>
-                    <DeployColumn title="Staging" />
-                    <DeployColumn title="AU" />
-                    <DeployColumn title="CA" />
-                    <DeployColumn title="US" />
-                </Row> 
-                <br>
-                </br> 
-                <button className="btn btn-primary">
-                Save
-                </button>
-            </>
-            
-=======
             <div>
                 <div>
                     <h4 className="text-primary">Deploy</h4>
@@ -193,7 +177,6 @@ class GridContainer extends React.Component<{}, State> {
                     </Row>
                 </Container>
             </div>
->>>>>>> 1a5cde0ca1614b0ffed0b02f1ab5dbc5a646f96b
         )
     }
 }

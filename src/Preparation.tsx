@@ -13,7 +13,7 @@ class Preparation extends React.Component<props> {
       <>
       
         
-          <h3 className="text-center">Preparation </h3>
+          <h3 className="text-left">Preparation </h3>
               <br></br>
           <h3>
               (Please HIGHLIGHT your item that needs to deploy and mark status DONE when completed)
@@ -39,9 +39,9 @@ class Preparation extends React.Component<props> {
                 Add Row
               </button>
               &nbsp;  &nbsp;  &nbsp;
-              {/* <button onClick={this.props.save} className="btn btn-primary">
+              <button onClick={this.props.save} className="btn btn-primary">
                 Save
-              </button> */}
+              </button>
             
             
             </div>
