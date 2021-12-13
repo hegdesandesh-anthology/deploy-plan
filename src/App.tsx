@@ -16,8 +16,6 @@ function App() {
 
       <Preparation/>
       <p>   <br></br> </p>
-      
-        <h4 className="text-primary">Deploy</h4>
         <GridContainer />
         <br />
       </Container>
