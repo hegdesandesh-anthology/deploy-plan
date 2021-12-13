@@ -39,9 +39,9 @@ class Preparation extends React.Component<props> {
                 Add Row
               </button>
               &nbsp;  &nbsp;  &nbsp;
-              {/* <button onClick={this.props.save} className="btn btn-primary">
+               <button onClick={this.props.save} className="btn btn-primary">
                 Save
-              </button> */}
+              </button>
             
             
             </div>

@@ -69,7 +69,16 @@ class GridContainer extends React.Component<{}, State> {
         this.handleChnageForAU = this.handleChnageForAU.bind(this);
         this.handleChnageForCA = this.handleChnageForCA.bind(this);
         this.handleChnageForUS = this.handleChnageForUS.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount() {
+        let localState: string | null = localStorage.getItem('gridContainerState'); 
+        if(localState) { 
+          this.setState(JSON.parse(localState));
+        }
+    }
+
     handleChange(event: any) {
         this.setState({
             isToggleOn: event.target.checked
@@ -154,24 +163,14 @@ class GridContainer extends React.Component<{}, State> {
             }
         })
     }
+
+    handleSubmit() {
+        const gridContainerState = this.state;
+        localStorage.setItem('gridContainerState', JSON.stringify(gridContainerState));
+    }
+
     render() {
         return (
-<<<<<<< HEAD
-            <>
-                <Row>
-                    <DeployColumn title="Staging" />
-                    <DeployColumn title="AU" />
-                    <DeployColumn title="CA" />
-                    <DeployColumn title="US" />
-                </Row> 
-                <br>
-                </br> 
-                <button className="btn btn-primary">
-                Save
-                </button>
-            </>
-            
-=======
             <div>
                 <div>
                     <h4 className="text-primary">Deploy</h4>
@@ -192,8 +191,10 @@ class GridContainer extends React.Component<{}, State> {
                         <DeployColumn title="US" data={this.state.US} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForUS} />
                     </Row>
                 </Container>
+                <div>
+                    <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
+                </div>
             </div>
->>>>>>> 1a5cde0ca1614b0ffed0b02f1ab5dbc5a646f96b
         )
     }
 }
