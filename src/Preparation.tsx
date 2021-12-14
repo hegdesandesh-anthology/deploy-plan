@@ -51,13 +51,6 @@ class Preparation extends React.Component<props> {
                 <div className="col"></div>
                 
                 </div>
-                
-
-        
-
-
-
-
           <h3 className="text-center">Preparation </h3>
               <br></br>
           <h3>

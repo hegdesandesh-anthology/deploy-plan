@@ -5,8 +5,6 @@ import Preparation from './Preparation';
 import {Container} from 'react-bootstrap'
 import GridContainer from './component/GridContainer';
 
-// just a comment
-
 function App() {
   return (
     <div className="App">
@@ -18,7 +16,7 @@ function App() {
 
       <Preparation/>
       <p>   <br></br> </p>
-      
+
         <GridContainer />
         <br />
       </Container>
