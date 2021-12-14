@@ -70,12 +70,13 @@ class GridContainer extends React.Component<{}, State> {
         this.handleChnageForCA = this.handleChnageForCA.bind(this);
         this.handleChnageForUS = this.handleChnageForUS.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.printHandler = this.printHandler.bind(this);
     }
 
     componentDidMount() {
-        let localState: string | null = localStorage.getItem('gridContainerState'); 
-        if(localState) { 
-          this.setState(JSON.parse(localState));
+        let localState: string | null = localStorage.getItem('gridContainerState');
+        if (localState) {
+            this.setState(JSON.parse(localState));
         }
     }
 
@@ -84,6 +85,11 @@ class GridContainer extends React.Component<{}, State> {
             isToggleOn: event.target.checked
         })
     }
+
+    printHandler(event: any) {
+        window.print();
+    }
+
     handleChnageForToggleOn(event: any, partName: string) {
         this.setState(prevState => {
             let index = Number(event.target.dataset.index);
@@ -91,19 +97,19 @@ class GridContainer extends React.Component<{}, State> {
             return {
                 Staging: {
                     ...prevState.Staging,
-                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index - 1 ? res : e)
                 },
                 AU: {
                     ...prevState.AU,
-                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index - 1 ? res : e)
                 },
                 CA: {
                     ...prevState.CA,
-                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index - 1 ? res : e)
                 },
                 US: {
                     ...prevState.US,
-                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index - 1 ? res : e)
                 }
             }
         })
@@ -116,12 +122,12 @@ class GridContainer extends React.Component<{}, State> {
                 ...prevState,
                 Staging: {
                     ...prevState.Staging,
-                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.Staging]: prevState.Staging[partName as keyof typeof prevState.Staging].map((e, i) => i === index - 1 ? res : e)
                 }
             }
         })
     }
-    
+
     handleChnageForAU(event: any, partName: string) {
         this.setState(prevState => {
             let index = Number(event.target.dataset.index);
@@ -130,12 +136,12 @@ class GridContainer extends React.Component<{}, State> {
                 ...prevState,
                 AU: {
                     ...prevState.AU,
-                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.AU]: prevState.AU[partName as keyof typeof prevState.AU].map((e, i) => i === index - 1 ? res : e)
                 }
             }
         })
     }
-    
+
     handleChnageForCA(event: any, partName: string) {
         this.setState(prevState => {
             let index = Number(event.target.dataset.index);
@@ -144,12 +150,12 @@ class GridContainer extends React.Component<{}, State> {
                 ...prevState,
                 CA: {
                     ...prevState.CA,
-                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.CA]: prevState.CA[partName as keyof typeof prevState.CA].map((e, i) => i === index - 1 ? res : e)
                 }
             }
         })
     }
-    
+
     handleChnageForUS(event: any, partName: string) {
         this.setState(prevState => {
             let index = Number(event.target.dataset.index);
@@ -158,7 +164,7 @@ class GridContainer extends React.Component<{}, State> {
                 ...prevState,
                 US: {
                     ...prevState.US,
-                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index-1 ? res : e)
+                    [partName as keyof typeof prevState.US]: prevState.US[partName as keyof typeof prevState.US].map((e, i) => i === index - 1 ? res : e)
                 }
             }
         })
@@ -174,13 +180,15 @@ class GridContainer extends React.Component<{}, State> {
             <div>
                 <div>
                     <h4 className="text-primary">Deploy</h4>
-                    <div className="form-check">
-                        <input className="form-check-input"
-                            type="checkbox"
-                            onChange={this.handleChange}
-                            checked={this.state.isToggleOn} />
+                    <div className="no-print">
+                        <div className="form-check">
+                            <input className="form-check-input"
+                                type="checkbox"
+                                onChange={this.handleChange}
+                                checked={this.state.isToggleOn} />
 
-                        <label className="form-check-label">Deploy all at the same time</label>
+                            <label className="form-check-label ">Deploy all at the same time</label>
+                        </div>
                     </div>
                 </div>
                 <Container>
@@ -191,8 +199,11 @@ class GridContainer extends React.Component<{}, State> {
                         <DeployColumn title="US" data={this.state.US} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForUS} />
                     </Row>
                 </Container>
-                <div>
+                <br />
+                <div className="no-print">
                     <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
+                    &nbsp;  &nbsp;  &nbsp;
+                    <button className="btn btn-primary" onClick={this.printHandler}>Print as PDF</button>
                 </div>
             </div>
         )

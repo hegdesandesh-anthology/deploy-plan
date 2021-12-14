@@ -2,25 +2,22 @@ import React from 'react';
 
 import Preparation from './Preparation';
 
-import {Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import GridContainer from './component/GridContainer';
 
 function App() {
   return (
     <div className="App">
-      <div className="p-3 mb-2 bg-light text-dark container-fluid">
-          <p>   <br></br> </p>
-          <Container>
-      
-      <p>   <br></br> </p>
-
-      <Preparation/>
-      <p>   <br></br> </p>
-
-        <GridContainer />
+      <div className="p-3 mb-2 container-fluid">
         <br />
-      </Container>
-    </div>
+        <Container>
+          <br/>
+          <Preparation />
+          <br/>
+          <GridContainer />
+          <br/>
+        </Container>
+      </div>
     </div>
   );
 }
