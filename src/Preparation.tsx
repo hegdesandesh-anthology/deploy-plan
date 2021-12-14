@@ -3,7 +3,7 @@ import updatecomponent from './PrepComponent'
 
 import Data from './Data.json'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, Col } from 'react-bootstrap';
 
 interface props {
   tablebody: any;
@@ -24,31 +24,30 @@ class Preparation extends React.Component<props> {
           <div className="col-5">
             <h3>63.5.6 Deployment Plan (BLUE)</h3>
             <br />
-            <table >
+            <Container >
               <div className="row clearfix">
                 <div className="col-md-12 column">
-                  <tr>
-                    <td><h4>Release version</h4></td>
-                    <td>
-                      <select value={this.props.versionvalue} className="form-control" onChange={this.props.version}>
+                  <Row>
+                    <Col><h4>Release version</h4></Col>
+                    <Col>
+                      <select value={this.props.versionvalue} className="form-control text-center" onChange={this.props.version}>
                         {
-                          Data.ReleaseVersion.map((result) => (<option>{result.version}</option>))
+                          Data.ReleaseVersion.map((result,i ) => (<option key={i}>{result.version}</option>))
 
                         }
                       </select>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td><h4>Release Date</h4></td>
-                    <td>
-                      <input type="date" value={this.props.datevalue} className="form-control" onChange={this.props.date} />
-                    </td>
-                  </tr>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col><h4>Release Date</h4></Col>
+                    <Col>
+                      <input type="date" value={this.props.datevalue} className="form-control text-center" onChange={this.props.date} />
+                    </Col>
+                  </Row>
 
                 </div>
               </div>
-            </table>
+            </Container>
           </div>
           <div className="col"></div>
 
@@ -65,7 +64,7 @@ class Preparation extends React.Component<props> {
             <div className="col-sm border border-dark text-center"> Due Date </div>
             <div className="col-sm border border-dark text-center"> Status </div>
             <div className="col-sm border border-dark text-center"> Owner </div>
-            <div className="col-sm-1 border border-dark text-center">  </div>
+            <div className="col-sm-1 border border-dark text-center"></div>
           </Row>
           <div>
             {this.props.tablebody}

@@ -169,7 +169,7 @@ const updatecomponent = (Originalcomponent: any) => {
                 <div className="col-sm border border-dark px-0">
                   <div>
                   <select className="form-control" name="item" value={this.state.rows[idx].Item} onChange={this.handleitemChange(idx)} >
-                    <option >----select value----</option>
+                    <option >----Select Value----</option>
                     {
                       Data.Item.map((result) => (<option key={result.id}>{result.Iname}</option>))
 
@@ -185,7 +185,7 @@ const updatecomponent = (Originalcomponent: any) => {
                 </div>
                 <div className="col-sm border border-dark px-0">
                   <select name="status" value={this.state.rows[idx].status} onChange={this.handlestatusChange(idx)} className="form-control">
-                    <option >----select value----</option>
+                    <option >----Select Value----</option>
                     {
                       Data.status.map((result) => (<option key={result.id}>{result.value}</option>))
                     }
@@ -193,14 +193,14 @@ const updatecomponent = (Originalcomponent: any) => {
                 </div>
                 <div className="col-sm border border-dark px-0">
                   <select name="owner" value={this.state.rows[idx].owner} onChange={this.handleownerChange(idx)} className="form-control">
-                    <option >----select value----</option>
+                    <option >----Select Value----</option>
                     {
                       Data.owner.map((result) => (<option key={result.id}>{result.owenername}</option>))
 
                     }
                   </select>
                 </div>
-                <div className="col-sm-1 border border-dark">
+                <div className="col-sm-1 border border-dark text-center">
                   <FontAwesomeIcon icon={["fas", "trash"]} onClick={() => this.handleRemoveRow(idx)} />
                 </div>
               </Row>
