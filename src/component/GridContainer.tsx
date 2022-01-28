@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import DeployColumn from "./DeployColumn";
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, FloatingLabel, Form } from 'react-bootstrap';
 
 interface Column {
     BeforeEmail: boolean[],
@@ -18,7 +18,8 @@ interface State {
     Staging: Column,
     AU: Column,
     CA: Column,
-    US: Column
+    US: Column,
+    comment: ''
 }
 
 class GridContainer extends React.Component<{}, State> {
@@ -61,7 +62,8 @@ class GridContainer extends React.Component<{}, State> {
                 DoThisLast: [false],
                 EncompassReactApps: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
                 OtherAPIs: [false, false]
-            }
+            },
+            comment: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleChnageForToggleOn = this.handleChnageForToggleOn.bind(this);
@@ -69,6 +71,7 @@ class GridContainer extends React.Component<{}, State> {
         this.handleChnageForAU = this.handleChnageForAU.bind(this);
         this.handleChnageForCA = this.handleChnageForCA.bind(this);
         this.handleChnageForUS = this.handleChnageForUS.bind(this);
+        this.handleComment = this.handleComment.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.printHandler = this.printHandler.bind(this);
     }
@@ -83,6 +86,12 @@ class GridContainer extends React.Component<{}, State> {
     handleChange(event: any) {
         this.setState({
             isToggleOn: event.target.checked
+        })
+    }
+
+    handleComment(event: any) {
+        this.setState({
+            comment : event.target.value
         })
     }
 
@@ -199,6 +208,19 @@ class GridContainer extends React.Component<{}, State> {
                         <DeployColumn title="US" data={this.state.US} onInputChange={this.state.isToggleOn ? this.handleChnageForToggleOn : this.handleChnageForUS} />
                     </Row>
                 </Container>
+                <br />
+                <div>
+                    <h4 className="text-primary"> Post Deploy</h4>
+                    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                        <Form.Control
+                            as="textarea"
+                            placeholder="Leave a comment here"
+                            style={{ height: '100px' }}
+                            value = {this.state.comment}
+                            onChange = {this.handleComment}
+                        />
+                    </FloatingLabel>
+                </div>
                 <br />
                 <div className="no-print">
                     <button className="btn btn-primary" onClick={this.handleSubmit}>Save</button>
