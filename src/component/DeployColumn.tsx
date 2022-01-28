@@ -21,6 +21,7 @@ interface Props {
     onInputChange: any
 }
 
+
 class DeployColumn extends React.Component<Props> {
     constructor(props: any) {
         super(props);
@@ -73,11 +74,11 @@ class DeployColumn extends React.Component<Props> {
         return (
             <Col className="border border-dark px-0">
                 <div className="border-bottom border-dark p-2">
-                    <div className="text-center">
+                    <div className="text-center font-heading">
                         <b>{this.props.title}</b>
                     </div>
                 </div>
-                <div className="border-bottom border-dark p-2">
+                <div className="border-bottom border-dark p-2 format">
                     <OptionsList options={BeforeEmail} flag={this.props.data.BeforeEmail} onInputChange={this.handleInputChangeForBeforeEmail} />
                 </div>
 

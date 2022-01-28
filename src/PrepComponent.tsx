@@ -3,7 +3,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react'
 import Data from './Data.json'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Row, Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 
 type Myprop = {
@@ -116,21 +116,15 @@ const updatecomponent = (Originalcomponent: any) => {
 
 
     saveStateToLocalStorage = () => {
-      localStorage.setItem('state', JSON.stringify(this.state));
-
-    }
-    getStateFromLocalStorage = () => {
-      let data: string | null
-      data = localStorage.getItem('state');
-      if (data !== undefined) {
-        this.setState(JSON.parse(data || '{}'));
-      }
-
+      let formstate = this.state;
+      localStorage.setItem('formstate', JSON.stringify(formstate));
     }
 
     componentDidMount() {
-      // Fetch data from local storage 
-      this.getStateFromLocalStorage();
+      let localState: string | null = localStorage.getItem('formstate');
+        if (localState) {
+            this.setState(JSON.parse(localState));
+        }
     }
 
     handleRemoveRow = (idx: number) => {
@@ -138,9 +132,9 @@ const updatecomponent = (Originalcomponent: any) => {
       const newrows = [...this.state.rows];
       newrows.splice(idx, 1);
 
-      this.setState(state => ({
+      this.setState({
         rows: newrows
-      }));
+      });
     };
 
     handlereleaseversion = (e: { target: { value: any; } }) => {

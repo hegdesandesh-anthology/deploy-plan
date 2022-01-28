@@ -22,7 +22,7 @@ class Preparation extends React.Component<props> {
         <div className="row">
           <div className="col-4"></div>
           <div className="col-5">
-            <h3>63.5.6 Deployment Plan (BLUE)</h3>
+            <h3 className="text-center">{this.props.versionvalue} Deployment Plan (BLUE)</h3>
             <br />
             <Container >
               <div className="row clearfix">
