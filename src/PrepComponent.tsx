@@ -3,7 +3,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react'
 import Data from './Data.json'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Row, Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 
 type Myprop = {
@@ -187,7 +187,7 @@ const updatecomponent = (Originalcomponent: any) => {
                   <select name="status" value={this.state.rows[idx].status} onChange={this.handlestatusChange(idx)} className="form-control">
                     <option >----Select Value----</option>
                     {
-                      Data.status.map((result) => (<option key={result.id}>{result.value}</option>))
+                      Data.status.map((result) => (<option key={result.id}>{result.status}</option>))
                     }
                   </select>
                 </div>
@@ -196,7 +196,6 @@ const updatecomponent = (Originalcomponent: any) => {
                     <option >----Select Value----</option>
                     {
                       Data.owner.map((result) => (<option key={result.id}>{result.owenername}</option>))
-
                     }
                   </select>
                 </div>

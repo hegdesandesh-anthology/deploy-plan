@@ -10,9 +10,9 @@
 
     "status":[
        
-        {"id":"1","value":"To Do"},
-        {"id":"2","value":"In-Progress"},
-        {"id":"3","value":"Done"}
+        {"id":"1","status":"To Do"},
+        {"id":"2","status":"In-Progress"},
+        {"id":"3","status":"Done"}
         
     ],
     "owner":[
