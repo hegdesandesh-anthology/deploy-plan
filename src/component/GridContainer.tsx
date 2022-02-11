@@ -182,6 +182,7 @@ class GridContainer extends React.Component<{}, State> {
     handleSubmit() {
         const gridContainerState = this.state;
         localStorage.setItem('gridContainerState', JSON.stringify(gridContainerState));
+        alert('The Data has been saved');
     }
 
     render() {

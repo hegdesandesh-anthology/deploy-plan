@@ -72,21 +72,17 @@ const updatecomponent = (Originalcomponent: any) => {
         DueDate: this.state.rows[idx].DueDate,
         status: value,
         owner: this.state.rows[idx].owner
-
-
-
       };
       this.setState({
         rows
       });
     };
 
-
     handleownerChange = (idx: number) => (e: { target: { value: string; } }) => {
       const { value } = e.target;
       const rows = [...this.state.rows];
       rows[idx] = {
-        Item: this.state.rows[idx].item,
+        Item: this.state.rows[idx].Item,
         DueDate: this.state.rows[idx].DueDate,
         status: this.state.rows[idx].status,
         owner: value
@@ -96,28 +92,25 @@ const updatecomponent = (Originalcomponent: any) => {
       });
     };
 
-
-
     handleAddRow = () => {
       const item: any = {
         Item: " ",
         DueDate: " ",
         status: " ",
         owner: " "
-
       };
       this.setState({
 
         rows: [...this.state.rows, item]
 
       });
-
+      alert('A new row has been added');
     };
-
 
     saveStateToLocalStorage = () => {
       let formstate = this.state;
       localStorage.setItem('formstate', JSON.stringify(formstate));
+      alert('The Data has been saved');
     }
 
     componentDidMount() {
@@ -135,6 +128,7 @@ const updatecomponent = (Originalcomponent: any) => {
       this.setState({
         rows: newrows
       });
+      alert('The selected row has been deleted');
     };
 
     handlereleaseversion = (e: { target: { value: any; } }) => {
@@ -153,6 +147,7 @@ const updatecomponent = (Originalcomponent: any) => {
         releasedate: value
       });
     };
+    
     render() {
       return (
         <div>
@@ -186,12 +181,34 @@ const updatecomponent = (Originalcomponent: any) => {
                   </select>
                 </div>
                 <div className="col-sm border border-dark px-0">
-                  <select name="owner" value={this.state.rows[idx].owner} onChange={this.handleownerChange(idx)} className="form-control">
-                    <option >----Select Value----</option>
-                    {
-                      Data.owner.map((result) => (<option key={result.id}>{result.owenername}</option>))
-                    }
-                  </select>
+                
+                  {(() => {
+
+                      switch (this.state.rows[idx].Item) {
+                        
+                          case 'Email':
+                          return(
+                          <input type="text" name="owner" value="Harsha B S" onChange={this.handleownerChange(idx)} className="form-control"/>
+                          )
+                          case 'Analytics':
+                          return(
+                          <input type="text" name="owner" value="Dwaipayan B" onChange={this.handleownerChange(idx)} className="form-control"/>
+                          )
+                          case 'Encompass Frontiers':
+                          return(
+                          <input type="text" name="owner" value="Subhas" onChange={this.handleownerChange(idx)} className="form-control"/>
+                          )
+                          case 'Foundations':
+                          return(
+                          <input type="text" name="owner" value="Deepak" onChange={this.handleownerChange(idx)} className="form-control"/>
+                          )
+                          case 'Online Giving':
+                          return(
+                          <input type="text" name="owner" value="Bhargava Raju" onChange={this.handleownerChange(idx)} className="form-control"/>
+                          )  
+                      }
+                  })()}
+
                 </div>
                 <div className="col-sm-1 border border-dark text-center">
                   <FontAwesomeIcon icon={["fas", "trash"]} onClick={() => this.handleRemoveRow(idx)} />
