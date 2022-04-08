@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Data from './Data.json'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { Row } from 'react-bootstrap';
+import Calender from './Calender.js';
 
 
 type Myprop = {
@@ -20,7 +21,7 @@ type Mystate = {
 library.add(faTrash);
 
 const updatecomponent = (Originalcomponent: any) => {
-  class HOC extends Component<Myprop, Mystate> {
+  class PrepComponent extends Component<Myprop, Mystate> {
     constructor(props: Myprop) {
       super(props)
       this.state = {
@@ -151,7 +152,7 @@ const updatecomponent = (Originalcomponent: any) => {
     render() {
       return (
         <div>
-          <Originalcomponent addrow={this.handleAddRow} save={this.saveStateToLocalStorage} version={this.handlereleaseversion} date={this.handlereleasedate} versionvalue={this.state.releaseversion} datevalue={this.state.releasedate}
+          <Originalcomponent addrow={this.handleAddRow} save={this.saveStateToLocalStorage} version={this.handlereleaseversion} date={this.handledateChange} versionvalue={this.state.releaseversion} datevalue={this.state.releasedate}
             tablebody={this.state.rows.map((item, idx) => (
               <Row key={idx} className="row">
                 <div className="col-sm-1 border border-dark text-center">{idx+1}</div>
@@ -167,10 +168,12 @@ const updatecomponent = (Originalcomponent: any) => {
                   </div>
                 </div>
                 <div className="col-sm border border-dark px-0">
-                  <input type="date" name="date" value={this.state.rows[idx].DueDate}
+                  {/* <input type="date" name="date" value={this.state.rows[idx].DueDate}
                     onChange={this.handledateChange(idx)}
                     className="form-control"
-                  />
+                  /> */}
+                  <Calender/>
+                  
                 </div>
                 <div className="col-sm border border-dark px-0">
                   <select name="status" value={this.state.rows[idx].status} onChange={this.handlestatusChange(idx)} className="form-control">
@@ -187,22 +190,27 @@ const updatecomponent = (Originalcomponent: any) => {
                       switch (this.state.rows[idx].Item) {
                         
                           case 'Email':
+                            delete Data.Item[0]
                           return(
                           <input type="text" name="owner" value="Harsha B S" onChange={this.handleownerChange(idx)} className="form-control"/>
                           )
                           case 'Analytics':
+                             delete Data.Item[1]
                           return(
                           <input type="text" name="owner" value="Dwaipayan B" onChange={this.handleownerChange(idx)} className="form-control"/>
                           )
                           case 'Encompass Frontiers':
+                            delete Data.Item[2]
                           return(
                           <input type="text" name="owner" value="Subhas" onChange={this.handleownerChange(idx)} className="form-control"/>
                           )
                           case 'Foundations':
+                            delete Data.Item[3]
                           return(
                           <input type="text" name="owner" value="Deepak" onChange={this.handleownerChange(idx)} className="form-control"/>
                           )
                           case 'Online Giving':
+                            delete Data.Item[4]
                           return(
                           <input type="text" name="owner" value="Bhargava Raju" onChange={this.handleownerChange(idx)} className="form-control"/>
                           )  
@@ -220,7 +228,7 @@ const updatecomponent = (Originalcomponent: any) => {
       )
     }
   }
-  return HOC;
+  return PrepComponent;
 }
 
 export default updatecomponent;

@@ -4,6 +4,7 @@ import updatecomponent from './PrepComponent'
 import Data from './Data.json'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Row, Container, Col } from 'react-bootstrap';
+import Calender from './Calender.js';
 
 interface props {
   tablebody: any;
@@ -13,9 +14,9 @@ interface props {
   date: any;
   versionvalue: any;
   datevalue: any;
+  
 }
 class Preparation extends React.Component<props> {
-
   render() {
     return (
       <>
@@ -37,11 +38,12 @@ class Preparation extends React.Component<props> {
                         }
                       </select>
                     </Col>
-                  </Row>
+                  </Row><br/>
                   <Row>
                     <Col><h4>Release Date</h4></Col>
                     <Col>
-                      <input type="date" value={this.props.datevalue} className="form-control text-center" onChange={this.props.date} />
+                      <Calender/>
+                      {/* <input type="date" value={this.props.datevalue} className="form-control text-center" onChange={this.props.date} /> */}
                     </Col>
                   </Row>
 
